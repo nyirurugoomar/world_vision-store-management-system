@@ -1,0 +1,75 @@
+<div class="flex h-screen bg-gray-100">
+    <!-- Sidebar -->
+    <div class="w-64 bg-white shadow-lg flex flex-col">
+      <div class="p-4 text-center">
+        <img src="/Logo.png" alt="World Vision Logo" class="h-12 mx-auto" />
+        
+      </div>
+      <nav class="flex-1 mt-10">
+        <ul class="space-y-4 text-gray-700 p-4">
+          <li class="flex items-center gap-2 cursor-pointer">
+            <i class="icon-name"></i> Items
+          </li>
+          <li class="flex items-center gap-2 cursor-pointer">
+            <i class="icon-name"></i> History
+          </li>
+        </ul>
+      </nav>
+      <div class="p-4">
+        <button class="text-left text-red-500 flex items-center gap-2">
+          <i class="icon-name"></i> Log Out
+        </button>
+      </div>
+    </div>
+  
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col">
+      <!-- Header -->
+      <header class="bg-orange-500 text-white p-4 flex justify-between items-center">
+        <h1 class="text-xl font-bold">Technician Area</h1>
+        <div class="flex gap-4 items-center">
+          <input
+            type="text"
+            placeholder="Search Tool"
+            class="bg-white text-gray-700 p-2  rounded-lg focus:outline-none"
+          />
+          <i class="icon-name"></i> <!-- Bell icon -->
+          <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+            <i class="icon-name"></i> <!-- Profile icon -->
+          </div>
+        </div>
+      </header>
+  
+      <!-- Grid -->
+      <div class="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <!-- Card Component -->
+        <div
+          *ngFor="let item of items"
+          class="bg-white shadow-lg rounded-lg overflow-hidden"
+        >
+          <img [src]="item.image" [alt]="item.name" class="w-full h-32 object-cover" />
+          <div class="p-4">
+            <p class="text-gray-700 font-bold">{{ item.id }}</p>
+            <p class="text-sm text-gray-500">{{ item.name }}</p>
+            <div class="flex justify-between items-center mt-2">
+              <p class="text-gray-700 font-bold">{{ item.quantity }}</p>
+              <span
+                class="text-sm font-medium"
+                [ngClass]="{
+                  'text-green-500': item.status === 'In-stock',
+                  'text-red-500': item.status === 'Out-of-stock',
+                  'text-yellow-500': item.status === 'Low-stock'
+                }"
+              >
+                {{ item.status }}
+              </span>
+            </div>
+            <button class="text-blue-500 text-sm mt-2">
+              Edit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

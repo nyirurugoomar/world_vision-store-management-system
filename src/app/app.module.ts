@@ -5,17 +5,23 @@ import { AppComponent } from './app.component';
 import { StoreKeeperLoginComponent } from './components/store-keeper-login/store-keeper-login.component';
 import { TechnicianLoginComponent } from './components/technician-login/technician-login.component';
 import { LoginComponent } from './components/login/login.component';
+import { TechnicianPageComponent } from './components/technician-page/technician-page.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     StoreKeeperLoginComponent,
     TechnicianLoginComponent,
-    LoginComponent
+    LoginComponent,
+    TechnicianPageComponent, 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
+  
+    
   ],
   providers: [
     provideClientHydration()

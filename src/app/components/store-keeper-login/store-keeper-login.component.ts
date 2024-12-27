@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrl: './store-keeper-login.component.css'
 })
 export class StoreKeeperLoginComponent {
+  
 
 }

@@ -1,24 +1,11 @@
-import { Component,inject } from '@angular/core';
-import { PopUpComponent } from '../pop-up/pop-up.component';
-import { MatDialog } from '@angular/material/dialog';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-technician-page',
-  templateUrl: './technician-page.component.html',
-  styleUrls: ['./technician-page.component.html'],
+  selector: 'app-item',
+  templateUrl: './item.component.html',
+  styleUrl: './item.component.css'
 })
-export class TechnicianPageComponent {
-
-  constructor(private _dialog: MatDialog){}
-
-  openDialog(){
-    this._dialog.open(PopUpComponent)
-  }
-
-
-
-
-  
+export class ItemComponent {
   items = [
     {
       id: 'IT 009',
@@ -40,8 +27,21 @@ export class TechnicianPageComponent {
       quantity: 10,
       status: 'Low-stock',
       image: 'https://via.placeholder.com/150'
+    },
+    {
+      id: 'IT 012',
+      name: 'chair',
+      quantity: 10,
+      status: 'Low-stock',
+      image: 'https://via.placeholder.com/150'
+    },
+    {
+      id: 'IT 012',
+      name: 'chair',
+      quantity: 10,
+      status: 'Low-stock',
+      image: 'https://via.placeholder.com/150'
     }
+
   ];
-
-
 }

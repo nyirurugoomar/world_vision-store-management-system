@@ -1,5 +1,6 @@
-<div class="flex h-screen bg-gray-100">
-    <!-- Sidebar -->
+<div class="flex h-screen relative bg-gray-100">
+
+    
     <div class="w-64 bg-white shadow-lg flex flex-col">
       <div class="p-4 text-center">
         <img src="/Logo.png" alt="World Vision Logo" class="h-12 mx-auto" />
@@ -19,12 +20,13 @@
         <button class="text-left text-red-500 flex items-center gap-2">
           <i class="icon-name"></i> Log Out
         </button>
+        
       </div>
-    </div>
+    </div> 
   
     <!-- Main Content -->
     <div class="flex-1 flex flex-col">
-      <!-- Header -->
+      
       <header class="bg-orange-500 text-white p-4 flex justify-between items-center">
         <h1 class="text-xl font-bold">Technician Area</h1>
         <div class="flex gap-4 items-center">
@@ -33,16 +35,16 @@
             placeholder="Search Tool"
             class="bg-white text-gray-700 p-2  rounded-lg focus:outline-none"
           />
-          <i class="icon-name"></i> <!-- Bell icon -->
+          <i class="icon-name"></i> 
           <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-            <i class="icon-name"></i> <!-- Profile icon -->
+            <i class="icon-name"></i> 
           </div>
         </div>
       </header>
   
-      <!-- Grid -->
+      
       <div class="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        <!-- Card Component -->
+       
         <div
           *ngFor="let item of items"
           class="bg-white shadow-lg rounded-lg overflow-hidden"
@@ -64,9 +66,13 @@
                 {{ item.status }}
               </span>
             </div>
-            <button class="text-blue-500 text-sm mt-2">
+            <button class="text-blue-500 text-sm mt-2" >
               Edit
             </button>
+
+            <button mat-raised-button  (click)="openDialog()">pop</button>
+
+
           </div>
         </div>
       </div>

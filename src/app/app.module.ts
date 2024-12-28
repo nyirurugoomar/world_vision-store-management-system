@@ -12,6 +12,7 @@ import { StoreKepperPageComponent } from './components/store-kepper-page/store-k
 import { AddItemComponent } from './components/add-item/add-item.component';
 import { ItemComponent } from './components/item/item.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { HistoryComponent } from './components/history/history.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +25,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     AddItemComponent,
     ItemComponent,
     SidebarComponent,
+    HistoryComponent,
     
   ],
   imports: [

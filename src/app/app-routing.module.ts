@@ -7,12 +7,13 @@ import { TechnicianPageComponent } from './components/technician-page/technician
 import { StoreKepperPageComponent } from './components/store-kepper-page/store-kepper-page.component';
 import { AddItemComponent } from './components/add-item/add-item.component';
 import { ItemComponent } from './components/item/item.component';
+import { HistoryComponent } from './components/history/history.component';
 
 const routes: Routes = [
   {path: '', component:LoginComponent},
   {path: 'app-technician-login', component:TechnicianLoginComponent},
   {path: 'app-store-keeper-login', component:StoreKeeperLoginComponent},
-  {path: 'app-technician-page', component:TechnicianPageComponent},
+  
   
   {
     path: 'app-store-kepper-page', 
@@ -22,6 +23,17 @@ const routes: Routes = [
       {path:'app-item', component:ItemComponent},
       {path: 'app-add-item', component:AddItemComponent},
     ]
+  },
+
+  {
+    path: 'app-technician-page', 
+    component:TechnicianPageComponent,
+     children:[
+      {path: '', component:ItemComponent},
+      {path:'app-item', component:ItemComponent},
+      {path: 'app-history', component:HistoryComponent},
+      
+     ]
   },
 
   

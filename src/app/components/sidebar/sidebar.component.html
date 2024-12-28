@@ -3,21 +3,19 @@
       <img src="/Logo.png" alt="World Vision Logo" class="h-12 mx-auto" />
     </div>
     <ul class="space-y-10 text-gray-700 p-4">
-        <li class="flex items-center gap-2 cursor-pointer" routerLink="app-item">
-            <i class="icon-name"></i> Items
-          </li>
-      <li class="flex items-center gap-2 cursor-pointer" routerLink="app-add-item">
-        <i class="icon-name"></i> Add Items
-      </li>
-      <li class="flex items-center gap-2 cursor-pointer" routerLink="/storekeeper/history">
-        <i class="icon-name"></i> History
-      </li>
-      <li class="flex items-center gap-2 cursor-pointer" routerLink="/storekeeper/technicians">
-        <i class="icon-name"></i> Technicians
-      </li>
-      <li class="flex items-center gap-2 cursor-pointer">
-        <i class="icon-name"></i> Log Out
-      </li>
+        <li
+      *ngFor="let button of buttons"
+      class="flex items-center gap-2 cursor-pointer text-black"
+      [routerLink]="button.route"
+    >
+      <i class="{{ button.icon }}"></i> {{ button.label }}
+      
+    </li>
     </ul>
+    <div class="mt-[24rem] p-4">
+      <button class="flex items-center gap-2 cursor-pointer w-full px-4 py-2 text-white bg-[#FF4D00] rounded-md hover:bg-[#b6572e]">
+        <i class="icon-name"></i> Log Out
+      </button>
+    </div>
   </div>
   

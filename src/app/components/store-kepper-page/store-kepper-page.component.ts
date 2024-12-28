@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-store-kepper-page',
@@ -6,6 +6,12 @@ import { Component } from '@angular/core';
   styleUrl: './store-kepper-page.component.css'
 })
 export class StoreKepperPageComponent {
+  sidebarButtons = [
+    { label: 'Item', icon: '', route: 'app-item' },
+    { label: 'Add Items', icon: 'icon-add', route: 'app-add-item' },
+    { label: 'History', icon: 'icon-history', route: '#' },
+    { label: 'Technicians', icon: 'icon-tech', route: '#' },
+  ];
   items = [
     {
       id: 'IT 009',
@@ -44,4 +50,4 @@ export class StoreKepperPageComponent {
     }
 
   ];
-}
+  @Input() buttons: { label: string; icon: string; route: string }[] = [];}

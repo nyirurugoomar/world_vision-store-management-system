@@ -1,4 +1,4 @@
-import { Component,inject } from '@angular/core';
+import { Component,inject,Input } from '@angular/core';
 import { PopUpComponent } from '../pop-up/pop-up.component';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -15,6 +15,11 @@ export class TechnicianPageComponent {
     this._dialog.open(PopUpComponent)
   }
 
+  // technician-dashboard.component.ts
+sidebarButtons = [
+  { label: 'Items', icon: '', route: 'app-item' },
+  { label: 'History', icon: '', route: 'app-history' },
+];
 
 
 
@@ -42,6 +47,8 @@ export class TechnicianPageComponent {
       image: 'https://via.placeholder.com/150'
     }
   ];
+
+  @Input() buttons: { label: string; icon: string; route: string }[] = [];
 
 
 }

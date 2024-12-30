@@ -8,9 +8,13 @@ import { Component, Input } from '@angular/core';
 export class StoreKepperPageComponent {
   sidebarButtons = [
     { label: 'Item', icon: '', route: 'app-item' },
-    { label: 'Add Items', icon: 'icon-add', route: 'app-add-item' },
-    { label: 'History', icon: 'icon-history', route: '#' },
-    { label: 'Technicians', icon: 'icon-tech', route: '#' },
+    { label: 'Add Items', icon: '', route: 'app-add-item' },
+    { label: 'History', icon: '', route: 'app-history' },
+    { label: 'Technicians', icon: '', route: 'app-technician' },
+    { label: 'Add technician', icon: '', route: 'app-add-technician' },
+    { label: 'Disable', icon: '', route: '#' },
+    { label: 'Manage Store', icon: '', route: '#' },
+    
   ];
   items = [
     {

@@ -8,12 +8,13 @@ import { StoreKepperPageComponent } from './components/store-kepper-page/store-k
 import { AddItemComponent } from './components/add-item/add-item.component';
 import { ItemComponent } from './components/item/item.component';
 import { HistoryComponent } from './components/history/history.component';
+import { TechnicianComponent } from './components/technician/technician.component';
+import { AddTechnicianComponent } from './components/add-technician/add-technician.component';
 
 const routes: Routes = [
   {path: '', component:LoginComponent},
   {path: 'app-technician-login', component:TechnicianLoginComponent},
   {path: 'app-store-keeper-login', component:StoreKeeperLoginComponent},
-  
   
   {
     path: 'app-store-kepper-page', 
@@ -22,6 +23,9 @@ const routes: Routes = [
       {path: '', component:ItemComponent},
       {path:'app-item', component:ItemComponent},
       {path: 'app-add-item', component:AddItemComponent},
+      {path: 'app-history', component:HistoryComponent},
+      {path: 'app-technician', component:TechnicianComponent},
+      {path: 'app-add-technician', component:AddTechnicianComponent},
     ]
   },
 
@@ -36,7 +40,14 @@ const routes: Routes = [
      ]
   },
 
-  
+  // {
+  //   path: 'app-technician', 
+  //   component:TechnicianComponent,
+  //    children:[
+  //     {path: 'app-add-technician', component:AddTechnicianComponent},
+      
+  //    ]
+  // }, 
 ];
 
 @NgModule({

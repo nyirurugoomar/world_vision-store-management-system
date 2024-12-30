@@ -1,0 +1,35 @@
+<div class="  h-full  bg-gray-100 p-4">
+    <div class="flex-1 flex flex-row justify-between items-center p-4">
+        <h2 class="text-[20px] text-[#383E49]">All Technicians</h2>
+        <div class="space-x-4">
+           
+            <button routerLink="app-add-technician" class="p-2 border-[#F58321] text-[#5D6679] border-2 rounded-[4px]">Add new</button>
+            
+           
+            <button  class="p-2 bg-[#FF0D0D] text-white border-2 rounded-[8px] ">Disable</button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2 p-10 space-y-4">
+          <div *ngFor="let technician of technicians" class="bg-white w-[291px] h-[343px] rounded-[35px] p-10 space-y-4">
+             <img src="/profile_icon.png" class="w-[70px] h-[70px]" alt="profile-icon">
+             <div>
+                <h3 class="text-[13px] text-[#F58321]">{{technician.position}}</h3>
+                <h3 class="text-[#494949] text-[24px]">{{technician.name}}</h3>
+                <div class="flex items-center gap-4">
+                <h4>ID</h4>
+                <h4>{{technician.id}}</h4>
+                </div>
+                <div class="flex items-center gap-4">
+                    <h4>Contact</h4>
+                    <h4>{{technician.contact}}</h4>
+                 </div>
+                
+                 <div class="flex justify-between  mt-10">
+                   <button  class="bg-[#F58321] w-[81px] h-[30px] text-white rounded-[10px]">Edit</button>
+                   <button  class="w-[81px] h-[30px] bg-[#FF0D0D] text-white rounded-[10px]">Disable</button>
+                 </div>
+             </div>
+          </div>
+      </div>
+</div>

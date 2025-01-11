@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreKeeperLoginComponent } from './components/store-keeper-login/store-keeper-login.component';
@@ -16,6 +17,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HistoryComponent } from './components/history/history.component';
 import { TechnicianComponent } from './components/technician/technician.component';
 import { AddTechnicianComponent } from './components/add-technician/add-technician.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +41,9 @@ import { AddTechnicianComponent } from './components/add-technician/add-technici
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     
   
     

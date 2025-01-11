@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
+import { GetItemService } from '../../service/get-item.service';
 
 @Component({
   selector: 'app-item',
@@ -6,42 +7,22 @@ import { Component } from '@angular/core';
   styleUrl: './item.component.css'
 })
 export class ItemComponent {
-  items = [
-    {
-      id: 'IT 009',
-      name: 'Hammer',
-      quantity: 50,
-      status: 'In-stock',
-      image: 'https://via.placeholder.com/150'
-    },
-    {
-      id: 'IT 010',
-      name: 'Screwdriver',
-      quantity: 0,
-      status: 'Out-of-stock',
-      image: 'https://via.placeholder.com/150'
-    },
-    {
-      id: 'IT 011',
-      name: 'Wrench',
-      quantity: 10,
-      status: 'Low-stock',
-      image: 'https://via.placeholder.com/150'
-    },
-    {
-      id: 'IT 012',
-      name: 'chair',
-      quantity: 10,
-      status: 'Low-stock',
-      image: 'https://via.placeholder.com/150'
-    },
-    {
-      id: 'IT 012',
-      name: 'chair',
-      quantity: 10,
-      status: 'Low-stock',
-      image: 'https://via.placeholder.com/150'
-    }
+  items: any[] = [];
 
-  ];
+  constructor(private getItemService:GetItemService) { }
+
+  ngOnInit(): void {
+    this.fetchItems(); // Fetch items when component initializes
+  }
+
+  fetchItems(): void{
+    this.getItemService.getItem().subscribe({
+      next:(data) =>{
+        this.items = data;
+      },
+      error: (error) => {
+        console.error('Error fetching items:', error); // Log error
+      }
+    })
+  }
 }

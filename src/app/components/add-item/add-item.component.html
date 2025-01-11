@@ -1,37 +1,50 @@
-<div class="h-screen bg-gray-100 ">
-    <div class="flex mt-20 h-full justify-center items-center ">
-      <form action="" >
-        <div class="space-y-10 w-[500px] flex flex-col justify-center text-center bg-white p-4 shadow-md rounded-lg">
-            <h1 class="text-2xl font-bold mb-4">New Item</h1>
-            
-            <div class="flex flex-row items-center justify-between">
-              <h3 class="text-[#48505E] text-[16px]">Item Name</h3>
-              <input type="text" placeholder="Enter product name" class="border-[1px] border-[#D0D5DD] p-2 rounded-lg w-[333px]" />
-            </div>
-            
-            <div class="flex flex-row items-center justify-between">
-              <h3 class="text-[#48505E] text-[16px]">Quantity</h3>
-              <input type="text" placeholder="Enter Product Quantity" class="border-[1px] border-[#D0D5DD] p-2 rounded-lg w-[333px]" />
-            </div>
-            
-            <div class="flex flex-row items-center justify-between">
-              <h3 class="text-[#48505E] text-[16px]">Item Name</h3>
-              <input type="text" placeholder="Enter product name" class="border-[1px] border-[#D0D5DD] p-2 rounded-lg w-[333px]" />
-            </div>
-            <div class="flex flex-row items-center justify-between">
-                <h3 class="text-[#48505E] text-[16px]">Date of delivery</h3>
-                <input type="text" placeholder="Enter date of delivery" class="border-[1px] border-[#D0D5DD] p-2 rounded-lg w-[333px]" />
-              </div>
-    
-              <div class="justify-start flex">
-                <label for="image-upload" class="cursor-pointer">
-                  <img class="w-[172px] h-[131px]" src="/icon.png" alt="Upload Image">
-                </label>
-                <input id="image-upload" type="file" class="hidden" accept="image/*">
-              </div>
-              <button class=" text-white bg-[#FF4D00] p-4 rounded-[10px] text-[20px] ">Add Product</button>
-          </div>
-      </form>
+<div class="h-screen bg-gray-100 flex items-center justify-center">
+  <form [formGroup]="addItemForm" (ngSubmit)="addItem()">
+    <div class="space-y-10 w-[500px] flex flex-col justify-center text-center bg-white p-4 shadow-md rounded-lg">
+      <h1 class="text-2xl font-bold mb-4">New Item</h1>
+
+      <div class="flex flex-row items-center justify-between">
+        <h3 class="text-[#48505E] text-[16px]">Item Name</h3>
+        <input type="text" formControlName="itemName" placeholder="Enter product name" class="border-[1px] border-[#D0D5DD] p-2 rounded-lg w-[333px]" />
+      </div>
+      <div *ngIf="addItemForm.get('itemName')?.touched && addItemForm.get('itemName')?.invalid">
+           <small class="text-red-600" *ngIf="addItemForm.get('itemName')?.hasError('required')">Item Name Required</small>
+            <small class="text-red-600" *ngIf="addItemForm.get('itemName')?.hasError('minlength')">Item Name must be at least 3 characters long</small>
+       </div>
+
+      <div class="flex flex-row items-center justify-between">
+        <h3 class="text-[#48505E] text-[16px]">Quantity</h3>
+        <input type="text" formControlName="itemQuantity" placeholder="Enter product quantity" class="border-[1px] border-[#D0D5DD] p-2 rounded-lg w-[333px]" />
+      </div>
+     <div *ngIf="addItemForm.get('itemQuantity')?.touched && addItemForm.get('itemQuantity')?.invalid">
+           <small class="text-red-600" *ngIf="addItemForm.get('itemQuantity')?.hasError('required')">Item Quantity Required</small>
+       </div>
+
+       <div class="flex flex-row items-center justify-between">
+        <h3 class="text-[#48505E] text-[16px]">Unit Item</h3>
+        <input type="text" formControlName="itemUnit" placeholder="Enter product quantity" class="border-[1px] border-[#D0D5DD] p-2 rounded-lg w-[333px]" />
+      </div>
+     <div *ngIf="addItemForm.get('itemUnit')?.touched && addItemForm.get('itemUnit')?.invalid">
+           <small class="text-red-600" *ngIf="addItemForm.get('itemUnit')?.hasError('required')">Item Quantity Required</small>
+       </div>
+
+      <div class="flex flex-row items-center justify-between">
+        <h3 class="text-[#48505E] text-[16px]">Date of Delivery</h3>
+        <input type="date" formControlName="itemDate" class="border-[1px] border-[#D0D5DD] p-2 rounded-lg w-[333px]" />
+      </div>
+      <div *ngIf="addItemForm.get('itemDate')?.touched && addItemForm.get('itemDate')?.invalid">
+           <small class="text-red-600" *ngIf="addItemForm.get('itemDate')?.hasError('required')">Item Date Required</small>
+       </div>
+
+      <!-- <div class="justify-start flex">
+        <label for="image-upload" class="cursor-pointer">
+          <img class="w-[172px] h-[131px]" src="/icon.png" alt="Upload Image">
+        </label>
+        <input id="image-upload" type="file" (change)="onFileSelected($event)" class="hidden" accept="image/*">
+      </div>
+      <small *ngIf="formControls.image.invalid && formControls.image.touched" class="text-red-500">Image is required.</small> -->
+
+      <button class="text-white bg-[#FF4D00] p-4 rounded-[10px] text-[20px]" type="submit" [disabled]="addItemForm.invalid">Add Product</button>
     </div>
-  </div>
-  
+  </form>
+</div>

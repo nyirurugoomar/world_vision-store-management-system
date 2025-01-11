@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GetTechnicianService } from '../../service/get-technician.service';
 
 @Component({
   selector: 'app-technician',
@@ -6,37 +7,22 @@ import { Component } from '@angular/core';
   styleUrl: './technician.component.css'
 })
 export class TechnicianComponent {
+technicians: any[] = []
 
-  technicians = [
-    {
-      position: "Technician Position",
-      name: "James Bond",
-      id: "001",
-      contact: "077 34 76 300"
+constructor(private getTechnicianService: GetTechnicianService){}
+
+ngOnInit(): void {
+  this.fetchTechnicians(); // Fetch technicians when component initializes
+}
+
+fetchTechnicians(): void{
+  this.getTechnicianService.getTechnicians().subscribe({
+    next:(data) =>{
+      this.technicians = data;
     },
-    {
-      position: "Junior Technician",
-      name: "Alice Smith",
-      id: "002",
-      contact: "077 88 44 200"
-    },
-    {
-      position: "Senior Technician",
-      name: "John Doe",
-      id: "003",
-      contact: "077 12 34 567"
-    },
-    {
-      position: "Senior Technician",
-      name: "John Doe",
-      id: "003",
-      contact: "077 12 34 567"
-    },
-    {
-      position: "Senior Technician",
-      name: "John Doe",
-      id: "004",
-      contact: "077 12 34 567"
+    error: (error) => {
+      console.error('Error fetching technicians:', error); // Log error
     }
-  ];
+  })
+}
 }

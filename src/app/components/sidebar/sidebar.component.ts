@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class SidebarComponent {
 
+
   constructor(private router: Router) {}
 
   @Input() buttons:{label: string; icon: string; route: string}[] = [];

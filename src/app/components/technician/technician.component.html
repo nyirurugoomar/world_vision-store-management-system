@@ -14,13 +14,16 @@
           <div *ngFor="let technician of technicians" class="bg-white w-[291px] h-[343px] rounded-[35px] p-10 space-y-4">
              <img src="/profile_icon.png" class="w-[70px] h-[70px]" alt="profile-icon">
              <div>
-                <h3 class="text-[13px] text-[#F58321]">{{technician.position}}</h3>
-                <h3 class="text-[#494949] text-[24px]">{{technician.name}}</h3>
+               
+                <h3 class="text-black font-bold text-[24px]">{{technician.name}}</h3>
                 <div class="flex items-center gap-4">
                 <h4>Occupation: {{technician.occupation}}</h4>
                 </div>
                 <div class="flex items-center gap-4">
                     <h4>Contact: {{technician.contactNumber}}</h4>
+                 </div>
+                 <div class="flex items-center gap-4">
+                    <h4>Password: {{technician.password}}</h4>
                  </div>
                 
                  <div class="flex justify-between  mt-10">

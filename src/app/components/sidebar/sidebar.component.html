@@ -7,8 +7,9 @@
       *ngFor="let button of buttons"
       class="flex items-center gap-2 cursor-pointer text-black"
       [routerLink]="button.route"
+      
     >
-      <i class="{{ button.icon }}"></i> {{ button.label }}
+      <img src={{button.icon}} alt="">{{ button.label }}
       
     </li>
     </ul>

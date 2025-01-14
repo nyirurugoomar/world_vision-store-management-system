@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-store-kepper-page',
   templateUrl: './store-kepper-page.component.html',
@@ -7,15 +7,23 @@ import { Component, Input } from '@angular/core';
 })
 export class StoreKepperPageComponent {
   sidebarButtons = [
-    { label: 'Item', icon: '', route: 'app-item' },
-    { label: 'Add Items', icon: '', route: 'app-add-item' },
-    { label: 'History', icon: '', route: 'app-history' },
-    { label: 'Technicians', icon: '', route: 'app-technician' },
-    { label: 'Add technician', icon: '', route: 'app-add-technician' },
-    { label: 'Disable', icon: '', route: '#' },
-    { label: 'Manage Store', icon: '', route: '#' },
+    { label: 'Item', icon: 'item_icon.svg', route: 'app-item' },
+    { label: 'Add Items', icon: 'Plus_icon.svg', route: 'app-add-item' },
+    { label: 'History', icon: 'history2.svg', route: 'app-history' },
+    { label: 'Technicians', icon: 'technician_icon.svg', route: 'app-technician' },
+    { label: 'Add technician', icon: 'Plus_icon.svg', route: 'app-add-technician' },
+    { label: 'Disable', icon: 'Disable_icon.svg', route: '#' },
+    { label: 'Manage Store', icon: 'Manage_icon.svg', route: '#' },
     
   ];
+
+  currentRoute: string = '';
+
+  constructor(private router: Router) {
+    this.router.events.subscribe(() => {
+      this.currentRoute = this.router.url;
+    });
+  }
   items = [
     {
       id: 'IT 009',

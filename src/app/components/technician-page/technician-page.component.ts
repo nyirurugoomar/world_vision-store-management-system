@@ -17,8 +17,8 @@ export class TechnicianPageComponent {
 
   // technician-dashboard.component.ts
 sidebarButtons = [
-  { label: 'Items', icon: '', route: 'app-item' },
-  { label: 'History', icon: '', route: 'app-history' },
+  { label: 'Items', icon: 'item_icon.svg', route: 'app-item' },
+  { label: 'History', icon: 'history2.svg', route: 'app-history' },
 ];
 
 

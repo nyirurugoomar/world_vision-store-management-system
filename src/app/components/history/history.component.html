@@ -33,7 +33,6 @@
       <thead>
         <tr class="bg-gray-100">
           <th class="border border-gray-300 px-4 py-2 text-left">Technician ID</th>
-          <th class="border border-gray-300 px-4 py-2 text-left">Item ID</th>
           <th class="border border-gray-300 px-4 py-2 text-left">Item Name</th>
           <th class="border border-gray-300 px-4 py-2 text-left">Quantity</th>
           <th class="border border-gray-300 px-4 py-2 text-left">Time</th>
@@ -41,9 +40,8 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of todayItems" class="even:bg-gray-50">
-          <td class="border border-gray-300 px-4 py-2">{{ item.technicianId }}</td>
-          <td class="border border-gray-300 px-4 py-2">{{ item.itemId }}</td>
-          <td class="border border-gray-300 px-4 py-2">{{ item.itemName }}</td>
+          <td class="border border-gray-300 px-4 py-2">{{ item._id }}</td>
+          <td class="border border-gray-300 px-4 py-2">{{ item.name }}</td>
           <td class="border border-gray-300 px-4 py-2">{{ item.quantity }}</td>
           <td class="border border-gray-300 px-4 py-2">{{ item.time }}</td>
         </tr>

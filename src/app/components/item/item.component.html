@@ -6,7 +6,7 @@
       class=" bg-white shadow-lg  rounded-lg "
     >
       <img src="/product-default.png" alt="productName" class="w-full h-28 object-cover" />
-      <div class="p-4">
+      <div class="p-4 space-y-4">
         
         <p class="text-gray-700 font-bold text-[10px]">{{ item._id }}</p>
         <p class="text-sm text-black font-bold underline">{{ item.itemName }}</p>
@@ -25,10 +25,11 @@
 
           <p class="text-gray-700 font-bold">Unit Item:<span class="bg-[#FF4D00] p-2 rounded-sm text-white">{{ item.itemUnit }}</span></p>
         </div>
-        <button class="text-blue-500 text-sm mt-2" >
+        <p class="text-gray-700 font-bold text-[10px]">Created At: {{ item.itemDate | date:'M/d/yyyy' }}</p>
+        <button class="text-blue-500 text-sm" >
           Edit
         </button>
-        <p class="text-gray-700 font-bold text-[10px]">Created At: {{ item.itemDate | date:'M/d/yyyy' }}</p>
+        
       </div>
     </div>
   </div>

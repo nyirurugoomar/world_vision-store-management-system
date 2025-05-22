@@ -69,9 +69,16 @@
                   <p class="text-gray-700 font-bold">Unit Item: <span class="bg-[#FF4D00] p-2 rounded-sm text-white">{{ item.itemUnit }}</span></p>
               </div>
               <p class="text-gray-700 font-bold text-[10px]">Created At: {{ item.itemDate | date:'M/d/yyyy' }}</p>
-              <button (click)="editItem(item._id)" class="text-blue-500 text-sm">
-                  Edit
-              </button>
+              <div *ngIf="!isTechnicianView" class="flex justify-between items-center mt-4">
+                <button (click)="editItem(item._id)" 
+                        class="text-blue-500 hover:text-blue-700 text-sm px-3 py-1 border border-blue-500 rounded">
+                    Edit
+                </button>
+                <button (click)="deleteItem(item._id)" 
+                        class="text-red-500 hover:text-red-700 text-sm px-3 py-1 border border-red-500 rounded">
+                    Delete
+                </button>
+            </div>
           </div>
       </div>
   </div>

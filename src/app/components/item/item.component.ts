@@ -84,4 +84,19 @@ export class ItemComponent implements OnInit {
       });
     }
   }
+
+  deleteItem(itemId: string): void {
+    if (confirm('Are you sure you want to delete this item?')) {
+      this.getItemService.deleteItemById(itemId).subscribe({
+        next: (response) => {
+          alert('Item deleted successfully');
+          this.fetchItems(); // Refresh the list
+        },
+        error: (error) => {
+          console.error('Error deleting item:', error);
+          alert('Failed to delete item');
+        }
+      });
+    }
+  }
 }

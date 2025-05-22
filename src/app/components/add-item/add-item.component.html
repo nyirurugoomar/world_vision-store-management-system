@@ -25,7 +25,7 @@
         <input type="text" formControlName="itemUnit" placeholder="Enter product quantity" class="border-[1px] border-[#D0D5DD] p-2 rounded-lg w-[333px]" />
       </div>
      <div *ngIf="addItemForm.get('itemUnit')?.touched && addItemForm.get('itemUnit')?.invalid">
-           <small class="text-red-600" *ngIf="addItemForm.get('itemUnit')?.hasError('required')">Item Quantity Required</small>
+           <small class="text-red-600" *ngIf="addItemForm.get('itemUnit')?.hasError('required')">Unit Item Required</small>
        </div>
 
       <div class="flex flex-row items-center justify-between">

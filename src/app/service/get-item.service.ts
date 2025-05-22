@@ -17,4 +17,16 @@ import { Observable } from 'rxjs';
     getItem(): Observable<any>{
         return this._http.get(`${this.apiUrl}`)
     }
+
+    getItemById(itemId: string): Observable<any>{
+        return this._http.get(`${this.apiUrl}/${itemId}`)
+    }
+
+    updateItemById(itemId: string, itemData: any): Observable<any>{
+        return this._http.put(`${this.apiUrl}/${itemId}`, itemData)
+    }
+
+    deleteItemById(itemId: string): Observable<any>{
+        return this._http.delete(`${this.apiUrl}/${itemId}`)
+    }
   }

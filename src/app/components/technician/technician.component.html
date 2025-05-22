@@ -1,36 +1,81 @@
-<div class="  h-full  bg-gray-100 p-4">
+<div class="h-full bg-gray-100 p-4">
     <div class="flex-1 flex flex-row justify-between items-center p-4">
         <h2 class="text-[20px] text-[#383E49]">All Technicians</h2>
         <div class="space-x-4">
-           
             <button routerLink="app-add-technician" class="p-2 border-[#F58321] text-[#5D6679] border-2 rounded-[4px]">Add new</button>
-            
-           
-            <button  class="p-2 bg-[#FF0D0D] text-white border-2 rounded-[8px] ">Disable</button>
+            <button class="p-2 bg-[#FF0D0D] text-white border-2 rounded-[8px]">Disable</button>
         </div>
-      </div>
+    </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2 p-10 space-y-4">
-          <div *ngFor="let technician of technicians" class="bg-white w-[291px] h-[343px] rounded-[35px] p-10 space-y-4">
-             <img src="/profile_icon.png" class="w-[70px] h-[70px]" alt="profile-icon">
-             <div>
-               
+    <!-- Edit Dialog -->
+    <div *ngIf="isEditing" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white p-6 rounded-lg w-[500px]">
+            <h2 class="text-2xl font-bold mb-4">Edit Technician</h2>
+            <form [formGroup]="editForm" (ngSubmit)="updateTechnician()">
+                <div class="space-y-4">
+                    <div class="flex flex-row items-center justify-between">
+                        <h3 class="text-[#48505E] text-[16px]">Name</h3>
+                        <input type="text" formControlName="name" class="border-[1px] border-[#D0D5DD] p-2 rounded-lg w-[333px]" />
+                    </div>
+                    <div *ngIf="editForm.get('name')?.touched && editForm.get('name')?.invalid">
+                        <small class="text-red-600" *ngIf="editForm.get('name')?.hasError('required')">Name Required</small>
+                        <small class="text-red-600" *ngIf="editForm.get('name')?.hasError('minlength')">Name must be at least 3 characters</small>
+                    </div>
+
+                    <div class="flex flex-row items-center justify-between">
+                        <h3 class="text-[#48505E] text-[16px]">Occupation</h3>
+                        <input type="text" formControlName="occupation" class="border-[1px] border-[#D0D5DD] p-2 rounded-lg w-[333px]" />
+                    </div>
+                    <div *ngIf="editForm.get('occupation')?.touched && editForm.get('occupation')?.invalid">
+                        <small class="text-red-600" *ngIf="editForm.get('occupation')?.hasError('required')">Occupation Required</small>
+                    </div>
+
+                    <div class="flex flex-row items-center justify-between">
+                        <h3 class="text-[#48505E] text-[16px]">Contact</h3>
+                        <input type="text" formControlName="contactNumber" class="border-[1px] border-[#D0D5DD] p-2 rounded-lg w-[333px]" />
+                    </div>
+                    <div *ngIf="editForm.get('contactNumber')?.touched && editForm.get('contactNumber')?.invalid">
+                        <small class="text-red-600" *ngIf="editForm.get('contactNumber')?.hasError('required')">Contact Required</small>
+                    </div>
+
+                    <div class="flex flex-row items-center justify-between">
+                        <h3 class="text-[#48505E] text-[16px]">Password</h3>
+                        <input type="text" formControlName="password" class="border-[1px] border-[#D0D5DD] p-2 rounded-lg w-[333px]" />
+                    </div>
+                    <div *ngIf="editForm.get('password')?.touched && editForm.get('password')?.invalid">
+                        <small class="text-red-600" *ngIf="editForm.get('password')?.hasError('required')">Password Required</small>
+                    </div>
+
+                    <div class="flex justify-end space-x-4 mt-6">
+                        <button type="button" (click)="closeEditDialog()" class="p-2 border border-gray-300 rounded-lg">Cancel</button>
+                        <button type="submit" [disabled]="editForm.invalid" class="p-2 bg-[#F58321] text-white rounded-lg">Update</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Technician Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2 p-10 space-y-4">
+        <div *ngFor="let technician of technicians" class="bg-white w-[291px] h-[343px] rounded-[35px] p-10 space-y-4">
+            <img src="/profile_icon.png" class="w-[70px] h-[70px]" alt="profile-icon">
+            <div>
                 <h3 class="text-black font-bold text-[24px]">{{technician.name}}</h3>
                 <div class="flex items-center gap-4">
-                <h4>Occupation: {{technician.occupation}}</h4>
+                    <h4>Occupation: {{technician.occupation}}</h4>
                 </div>
                 <div class="flex items-center gap-4">
                     <h4>Contact: {{technician.contactNumber}}</h4>
-                 </div>
-                 <div class="flex items-center gap-4">
+                </div>
+                <div class="flex items-center gap-4">
                     <h4>Password: {{technician.password}}</h4>
-                 </div>
+                </div>
                 
-                 <div class="flex justify-between  mt-10">
-                   <button  class="bg-[#F58321] w-[81px] h-[30px] text-white rounded-[10px]">Edit</button>
-                   <button  class="w-[81px] h-[30px] bg-[#FF0D0D] text-white rounded-[10px]">Disable</button>
-                 </div>
-             </div>
-          </div>
-      </div>
+                <div class="flex justify-between mt-10">
+                    <button (click)="editTechnician(technician._id)" class="bg-[#F58321] w-[81px] h-[30px] text-white rounded-[10px]">Edit</button>
+                    <button class="w-[81px] h-[30px] bg-[#FF0D0D] text-white rounded-[10px]">Disable</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
